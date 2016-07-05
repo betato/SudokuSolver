@@ -10,6 +10,24 @@ namespace SudokuSolver
     {
         public const string IntroMessage = "Enter nine numbers per line from 0-9. Zero represents a blank square";
 
+        public bool GetOption(string question, string optionTrue, string optionFalse)
+        {
+            while (true)
+            {
+                Console.WriteLine(String.Format("{0}, ({1}/{2})", question, optionTrue, optionFalse));
+                string input = Console.ReadLine().Trim().ToUpperInvariant();
+                if (input == optionTrue.ToUpperInvariant())
+                {
+                    return true;
+                }
+                if (input == optionFalse.ToUpperInvariant())
+                {
+                    return false;
+                }
+                // Not an option
+            }
+        }
+
         public void WritePuzzle(int[][] puzzle)
         {
             foreach (int[] row in puzzle)

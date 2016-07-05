@@ -12,10 +12,24 @@ namespace SudokuSolver
 
         static void Main(string[] args)
         {
-            int[][] puzzle = puzzleIO.ReadPuzzle();
-            solver.SolvePuzzle(puzzle);
-            puzzleIO.WritePuzzle(puzzle);
-            Console.ReadLine();
+            while (true)
+            {
+                // Get input
+                Console.WriteLine(TextIO.IntroMessage + "\n");
+                int[][] puzzle = puzzleIO.ReadPuzzle();
+                // Solve puzzle
+                solver.SolvePuzzle(puzzle);
+                Console.WriteLine("");
+                // Display puzzle
+                puzzleIO.WritePuzzle(puzzle);
+                Console.WriteLine("");
+                // Do it again (maybe)
+                if (puzzleIO.GetOption("Quit?", "Y", "N"))
+                {
+                    return;
+                }
+                Console.WriteLine("");
+            }
         }
     }
 }
